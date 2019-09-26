@@ -80,7 +80,7 @@ OndatoService.shared.serverMode = OndatoServerMode.test
 
 ```swift
 let sdk = OndatoService.shared.instantiateNavigationController()
-
+sdk.modalPresentationStyle = .fullScreen
 self.present(sdk, animated: true, completion: nil) //`self` should be your view controller
 ```
 
