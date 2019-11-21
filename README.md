@@ -39,17 +39,14 @@ The Ondato SDK makes use of the device Camera. You will be required to have the 
 ```
 ### 2. Installation 
 
-### CocoaPods
+### Manually
+Download archive `OndatoSDK.zip` from latest sdk releases. Add frameworks to your project:
+1) Anyline.framework (select `Do Not Embed`)
+2) AnylineResources.bundle
+3) ZoomAuthenticationHybrid.framework (select `Ember & Sign`)
+4) OndatoSDK.framework (select `Ember & Sign`)
 
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate OndatoSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-pod 'OndatoSDK'
-```
-
-Install pod and build first time.
-
-Sign subframeworks. Open `Build Phases` tab of your target and select add `New Run Script Phase`. Past code below to scipt.
+Sign subframeworks. Open `Build Phases` tab of your target and select add `New Run Script Phase`. Paste code below to scipt.
 ```
 pushd "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/OndatoSDK.framework/Frameworks
 
