@@ -41,10 +41,10 @@ The Ondato SDK makes use of the device Camera. You will be required to have the 
 
 ### Manually
 Download archive `OndatoSDK.zip` from latest sdk releases. Add frameworks to your project:
-1) Anyline.framework (select `Do Not Embed`)
-2) AnylineResources.bundle
-3) ZoomAuthenticationHybrid.framework (select `Ember & Sign`)
-4) OndatoSDK.framework (select `Ember & Sign`)
+1) ZoomAuthentication.framework (select `Ember & Sign`)
+2) OndatoSDK.framework (select `Ember & Sign`)
+
+Add `zoom_images` folder to your project Assets folder.
 
 Sign subframeworks. Open `Build Phases` tab of your target and select add `New Run Script Phase`. Paste code below to scipt.
 ```
