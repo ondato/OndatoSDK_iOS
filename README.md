@@ -88,14 +88,17 @@ Congratulations! You have successfully started the flow. Carry on reading the ne
 
 ## Handling callbacks
 
-To handle result your view controller should implement `OndatoFlowDelegate` method `ondatoSDKDidFinished`:
+To handle result your view controller should implement `OndatoFlowDelegate` methods `onSuccess` and `onFailure` which contains `OndatoError` {`CANCELED`, `BAD_SERVER_RESPONSE`}:
 
 ```swift
 OndatoService.shared.flowDelegate = {delegate : OndatoFlowDelegate}
 
-func ondatoSDKDidFinished() {
-        print("SDK closed.")
-    }
+func onSuccess() {
+    print("SDK is finished successfully.")
+}
+func onFailure(error: OndatoError) {
+    print("Ondato error.")
+}
 ```
 
 ## Customising SDK
