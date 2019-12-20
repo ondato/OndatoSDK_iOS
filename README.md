@@ -44,18 +44,42 @@ Download archive `OndatoSDK.zip` from latest sdk releases. Add frameworks to you
 1) ZoomAuthentication.framework (select `Ember & Sign`)
 2) OndatoSDK.framework (select `Ember & Sign`)
 
-Add `zoom_images` folder to your project Assets folder.
-
-Sign subframeworks. Open `Build Phases` tab of your target and select add `New Run Script Phase`. Paste code below to scipt.
+Remove unnecessary architectures, needed for release. Open `Build Phases` tab of your target and select add `New Run Script Phase`. Paste code below to scipt.
 ```
-pushd "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/OndatoSDK.framework/Frameworks
+# skip if we run in debug
+if [ "$CONFIGURATION" == "Debug" ]; then
+echo "Skip frameworks cleaning in debug version"
+exit 0
+fi
 
-for EACH in *.framework; do
-/usr/bin/codesign --force --deep --sign "${EXPANDED_CODE_SIGN_IDENTITY}" --entitlements "${TARGET_TEMP_DIR}/${PRODUCT_NAME}.app.xcent" --timestamp=none $EACH
+APP_PATH="${TARGET_BUILD_DIR}/${WRAPPER_NAME}"
+
+# This script loops through the frameworks embedded in the application and
+# removes unused architectures.
+find "$APP_PATH" -name '*.framework' -type d | while read -r FRAMEWORK
+do
+FRAMEWORK_EXECUTABLE_NAME=$(defaults read "$FRAMEWORK/Info.plist" CFBundleExecutable)
+FRAMEWORK_EXECUTABLE_PATH="$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME"
+echo "Executable is $FRAMEWORK_EXECUTABLE_PATH"
+
+EXTRACTED_ARCHS=()
+
+for ARCH in $ARCHS
+do
+echo "Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME"
+lipo -extract "$ARCH" "$FRAMEWORK_EXECUTABLE_PATH" -o "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"
+EXTRACTED_ARCHS+=("$FRAMEWORK_EXECUTABLE_PATH-$ARCH")
 done
-popd
-echo "BUILD DIR ${TARGET_BUILD_DIR}"
 
+echo "Merging extracted architectures: ${ARCHS}"
+lipo -o "$FRAMEWORK_EXECUTABLE_PATH-merged" -create "${EXTRACTED_ARCHS[@]}"
+rm "${EXTRACTED_ARCHS[@]}"
+
+echo "Replacing original executable with thinned version"
+rm "$FRAMEWORK_EXECUTABLE_PATH"
+mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
+
+done
 ```
 
 ### 3. Creating the SDK configuration
