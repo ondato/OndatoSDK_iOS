@@ -142,6 +142,7 @@ OndatoService.shared.appearance.regularFontName = "Rambla-Regular" //Defines the
 OndatoService.shared.appearance.mediumFontName = "Rambla-Bold" //Defines the medium text font
 OndatoService.shared.appearance.shouldShowSuccessWindow = false //Enables/disables success window
 OndatoService.shared.appearance.shouldShowStartWindow = false //Enables/disables start window
+OndatoService.shared.appearance.shouldShowSplashWindow = false //Enables/disables splash window
 ```
 
 ### 3. Flow
