@@ -186,3 +186,14 @@ OndatoLocalizeHelper.language = OndatoLanguage.EN // OndatoLanguage.LT
 ```
 
 To override Zoom strings, add `ZoomLT.bundle` and `ZoomEN.bundle` to the project directory. Make sure to check "Copy items if needed" and select project target. Example bundles can be found in Releases `ZoomBundles.zip`.
+Implementation:
+
+```swift
+if let bundleURL = Bundle.main.url(forResource: "ZoomLT", withExtension: "bundle"), let bundle = Bundle(url: bundleURL) {
+    OndatoService.shared.zoomLocalizationBundleLT = bundle
+}
+        
+if let bundleURL = Bundle.main.url(forResource: "ZoomEN", withExtension: "bundle"), let bundle = Bundle(url: bundleURL) {
+    OndatoService.shared.zoomLocalizationBundleEN = bundle
+}
+```
