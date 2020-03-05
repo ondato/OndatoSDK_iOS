@@ -184,3 +184,5 @@ Ondato iOS SDK already comes with out-of-the-box translations for the following 
 ```swift
 OndatoLocalizeHelper.language = OndatoLanguage.EN // OndatoLanguage.LT
 ```
+
+To override Zoom strings, add `ZoomLT.bundle` and `ZoomEN.bundle` to the project directory. Make sure to check "Copy items if needed" and select project target. Example bundles can be found in Releases `ZoomBundles.zip`.
