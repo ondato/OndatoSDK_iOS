@@ -41,8 +41,8 @@ The Ondato SDK makes use of the device Camera. You will be required to have the 
 
 ### Manually
 Download archive `OndatoSDK.zip` from latest sdk releases. Add frameworks to your project:
-1) ZoomAuthentication.framework (select `Ember & Sign`)
-2) OndatoSDK.framework (select `Ember & Sign`)
+1) ZoomAuthentication.framework (select `Embed & Sign`)
+2) OndatoSDK.framework (select `Embed & Sign`)
 
 Remove unnecessary architectures, needed for release. Open `Build Phases` tab of your target and select add `New Run Script Phase`. Paste code below to scipt.
 ```
@@ -93,6 +93,8 @@ OndatoService.shared.initialize(username: "username", password: "password")
 OndatoService.shared.initialize(username: "username", password: "password", token: "token") //'token' is optional
 OndatoService.shared.serverMode = OndatoServerMode.test
 OndatoService.shared.customData = ["key": "value"] // optionally provide customData parameter
+OndatoService.shared.frontendValidations = false // optionally disable in app validations
+OndatoService.shared.identificationId = "identificationId" // optionally provide identificationId value
 ```
 
 ### 4. Starting the flow
@@ -118,10 +120,10 @@ To handle result your view controller should implement `OndatoFlowDelegate` meth
 ```swift
 OndatoService.shared.flowDelegate = {delegate : OndatoFlowDelegate}
 
-func onSuccess() {
+func onSuccess(identificationId: String?) { // provided identificationId
     print("SDK is finished successfully.")
 }
-func onFailure(error: OndatoError) {
+func onFailure(identificationId: String?, error: OndatoError) { // provided identificationId
     print("Ondato error.")
 }
 ```
