@@ -90,9 +90,11 @@ done
 #### Swift
 
 ```swift
+// Use one of the provided initializers
 OndatoService.shared.initialize(username: "username", password: "password")
 OndatoService.shared.initialize(username: "username", password: "password", token: "token") //'token' is optional
 OndatoService.shared.initialize(accessToken: "accessToken")
+
 OndatoService.shared.serverMode = OndatoServerMode.test
 OndatoService.shared.customData = ["key": "value"] // optionally provide customData parameter
 OndatoService.shared.frontendValidations = false // optionally disable in app validations
