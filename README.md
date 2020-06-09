@@ -31,12 +31,10 @@ We recommend you to lock your app to a portrait orientation.
 
 ### 1. App permissions
 
-The Ondato SDK makes use of the device Camera. You will be required to have the `NSCameraUsageDescription` key in your application's `Info.plist` file, also need to provide value for `NSPhotoLibraryUsageDescription` key:
+The Ondato SDK makes use of the device Camera. You will be required to have the `NSCameraUsageDescription` key in your application's `Info.plist` file:
 ```
 <key>NSCameraUsageDescription</key>
 <string>Required for document and facial capture</string>
-<key>NSPhotoLibraryUsageDescription</key>
-<string>Framework uses</string>
 ```
 ### 2. Installation 
 
