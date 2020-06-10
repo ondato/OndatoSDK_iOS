@@ -96,7 +96,6 @@ OndatoService.shared.initialize(accessToken: "accessToken") //Token must be with
 OndatoService.shared.serverMode = OndatoServerMode.test
 OndatoService.shared.customData = ["key": "value"] // optionally provide customData parameter
 OndatoService.shared.frontendValidations = false // optionally disable in app validations
-OndatoService.shared.identificationId = "identificationId" // optionally provide identificationId value
 ```
 
 ### 4. Starting the flow
