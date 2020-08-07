@@ -27,7 +27,7 @@ We recommend you to lock your app to a portrait orientation.
 
 - SDK supports iOS 10.0
 - SDK supports Swift 5
-- SDK Xcode Version 11.5
+- SDK Xcode Version 11.6
 
 ### 1. App permissions
 
@@ -183,12 +183,13 @@ func viewForLoading(progress: Float) -> UIView? {
 Ondato iOS SDK already comes with out-of-the-box translations for the following locales:
 - English (en) :uk:
 - Lithuanian (lt) :lt:
+- German (de) :de:
 
 ```swift
-OndatoLocalizeHelper.language = OndatoLanguage.EN // OndatoLanguage.LT
+OndatoLocalizeHelper.language = OndatoLanguage.EN // OndatoLanguage.LT, OndatoLanguage.DE
 ```
 
-To override Zoom strings, add `ZoomLT.bundle` and `ZoomEN.bundle` to the project directory. Make sure to check "Copy items if needed" and select project target. Example bundles can be found in Releases `Localization.zip`.
+To override Zoom strings, add `ZoomLT.bundle`, `ZoomEN.bundle` and `ZoomDE.bundle` to the project directory. Make sure to check "Copy items if needed" and select project target. Example bundles can be found in Releases `Localization.zip`.
 Implementation:
 
 ```swift
@@ -199,9 +200,13 @@ if let bundleURL = Bundle.main.url(forResource: "ZoomLT", withExtension: "bundle
 if let bundleURL = Bundle.main.url(forResource: "ZoomEN", withExtension: "bundle"), let bundle = Bundle(url: bundleURL) {
     OndatoService.shared.zoomLocalizationBundleEN = bundle
 }
+
+if let bundleURL = Bundle.main.url(forResource: "ZoomDE", withExtension: "bundle"), let bundle = Bundle(url: bundleURL) {
+    OndatoService.shared.zoomLocalizationBundleDE = bundle
+}
 ```
 
-To override Ondato strings, add `OndatoLT.strings` and `OndatoEN.strings` files to the project directory. Make sure to check "Copy items if needed" and select project target. Example files can be found in Releases `Localization.zip`.
+To override Ondato strings, add `OndatoLT.strings`, `OndatoEN.strings` and `OndatoDE.strings` files to the project directory. Make sure to check "Copy items if needed" and select project target. Example files can be found in Releases `Localization.zip`.
 Implementation:
 
 ```swift
@@ -211,5 +216,9 @@ if let fileURL = Bundle.main.url(forResource: "OndatoEN", withExtension: "string
         
 if let fileURL = Bundle.main.url(forResource: "OndatoLT", withExtension: "strings") {
     OndatoService.shared.ondatoLocalizationFileLT = fileURL
+}
+
+if let fileURL = Bundle.main.url(forResource: "OndatoDE", withExtension: "strings") {
+    OndatoService.shared.ondatoLocalizationFileDE = fileURL
 }
 ```
