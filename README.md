@@ -27,7 +27,7 @@ We recommend you to lock your app to a portrait orientation.
 
 - SDK supports iOS 10.0
 - SDK supports Swift 5
-- SDK Xcode Version 11.6
+- SDK Xcode Version 12.0
 
 ### 1. App permissions
 
