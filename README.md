@@ -96,7 +96,7 @@ OndatoService.shared.serverMode = OndatoServerMode.test
 OndatoService.shared.identificationId = "identificationId" // optionally provide identificationId
 OndatoService.shared.frontendValidations = false // optionally disable in app validations
 OndatoService.shared.skipLivenessTest = false // optionally allow user to skip zoom verification after zoom error
-OndatoService.shared.skipCaptureSelfie = false // optionally disable capturing selfie + document
+OndatoService.shared.skipCaptureSelfie = true // optionally disable capturing selfie + document
 ```
 
 ### 4. Starting the flow
