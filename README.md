@@ -27,7 +27,7 @@ We recommend you to lock your app to a portrait orientation.
 
 - SDK supports iOS 10.0
 - SDK supports Swift 5
-- SDK Xcode Version 12.0
+- SDK Xcode Version 12.1
 
 ### 1. App permissions
 
@@ -95,6 +95,8 @@ OndatoService.shared.initialize(accessToken: "accessToken")
 OndatoService.shared.serverMode = OndatoServerMode.test
 OndatoService.shared.identificationId = "identificationId" // optionally provide identificationId
 OndatoService.shared.frontendValidations = false // optionally disable in app validations
+OndatoService.shared.skipLivenessTest = false // optionally allow user to skip zoom verification after zoom error
+OndatoService.shared.skipCaptureSelfie = false // optionally disable capturing selfie + document
 ```
 
 ### 4. Starting the flow
